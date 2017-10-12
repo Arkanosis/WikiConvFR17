@@ -1,0 +1,470 @@
+Atelier Lua 23 et 24 janvier 2016
+
+Présents 
+
+    0x010C
+
+    Arkanosis
+
+    Ash Crow
+
+    Elfix
+
+    Harmonia Amanda
+
+    Zetud
+
+
+Liens
+
+Samedi
+
+    https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual (Doc principale, toujours à jour)
+
+    http://fr.wikiversity.org/wiki/Initiation_au_Lua_avec_Scribunto (Présentation en français très bien écrite)
+
+
+Dimanche
+
+    https://www.mediawiki.org/wiki/Extension:Wikibase_Client/Lua (Doc de référence pour les fonctions liées à Wikidata, toujours à jour également)
+
+
+Faire ses tests sur http://test2.wikipedia.org !
+
+Notes de l'atelier
+
+(Pas tout à fait dans l'ordre de l'atelier, mais dans l'ordre prévu initialement. Et à quelques ajustements près.)
+
+Template:WMFR
+
+Hello world!
+
+TestLua
+
+{{WMFR}}
+
+Module:WMFRLua
+
+
+local p = {}
+ 
+function p.foo()
+        return 'Hello Lua!'
+end
+ 
+return p
+
+-- p = { ['key'] = value, key = value }
+-- p { 'a', 'b', 'c' }
+
+TestLua
+
+{{WMFR}}
+
+----
+
+{{#invoke:WMFRLua|foo}}
+
+Template:WMFR
+
+Hello {{{1}}}! {{{bar}}}
+
+Module:WMFRLua
+
+local p = {}
+ 
+function p.foo(frame)
+        return 'Hello ' .. frame.args[1] .. '! ' .. frame.args.bar
+end
+ 
+return p
+
+TestLua
+
+{{WMFR|Wikipédia|bar=moi}}
+
+----
+
+{{#invoke:WMFRLua|foo|Wikipédia|bar=moi}}
+
+Template:WMFR
+
+{{#invoke:WMFRLua|foo|{{{1}}}|bar={{{bar}}}}}
+
+TestLua
+
+{{WMFR|Wikidata|bar=tomtom}}
+
+Module:WMFRLua
+
+local p = {}
+ 
+function p.foo(frame)
+        return 'Hello ' .. frame.args[1] .. '! ' .. frame.args.bar ' & ' .. frame.args.baz
+end
+ 
+return p
+
+Template:WMFR
+
+{{#invoke:WMFRLua|foo}}
+
+Module:WMFRLua
+
+local p = {}
+ 
+function p.foo(frame)
+        return 'Hello ' .. frame:getParent().args[1] .. '! ' .. frame:getParent().args.bar .. ' & ' .. frame:getParent().args.baz
+end
+ 
+return p
+
+Module:WMFRLua
+
+local p = {}
+ 
+function p.foo(frame)
+        local args = frame:getParent().args
+        return 'Hello ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+end
+ 
+return p
+
+TestLua
+
+{{WMFR|Wikidata|bar=tomtom|baz=nana}}
+
+Module:WMFRLua
+
+local p = {}
+ 
+function p.foo(frame)
+        local args = frame:getParent().args
+        return 'Hello ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+end
+
+function p.toto(frame)
+        local args = frame:getParent().args
+        return 'Bye ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+end
+ 
+return p
+
+Template:WMFR2
+
+{{#invoke:WMFRLua|toto}}
+
+TestLua
+
+{{WMFR2|Wikidata|bar=tomtom|baz=nana}}
+
+Module:WMFRLua
+
+local p = {}
+ 
+local function internal(frame, msg)
+        local args = frame:getParent().args
+        return msg .. ' ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+end
+ 
+function p.foo(frame)
+        return internal(frame, 'Hello')
+end
+
+function p.toto(frame)
+        return internal(frame, 'Bye')
+end
+
+return p
+
+Pause du samedi midi ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Module:WMFRLuaInternal
+
+local p = {}
+ 
+function p.internal(frame, msg)
+        local args = frame:getParent().args
+        return msg .. ' ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+end
+ 
+return p
+
+Module:WMFRLua
+
+local p = {}
+
+local int = require('Module:WMFRLuaInternal') 
+
+function p.foo(frame)
+        return int.internal(frame, 'Hello')
+end
+
+function p.toto(frame)
+        return int.internal(frame, 'Bye')
+end
+ 
+return p
+
+TestLua
+
+{{WMFR2|Wikidata|-1|bar=toi|baz=moi}}
+
+----
+
+{{WMFR2|Wikidata|5|bar=toi|baz=moi}}
+
+----
+
+{{WMFR2|Wikidata|42|bar=toi|baz=moi}}
+
+UTILISER LA PREVIEW!
+
+Module:WMFRLuaInternal
+
+local p = {}
+ 
+--[[
+    Répète le texte plusieurs fois
+]] 
+
+function p.internal(frame, msg)
+        local args = frame:getParent().args
+        -- args[2] est le nombre de répétitions
+        local repet = tonumber(args[2])
+        if repet < 0 then
+                error('Nombre de répétitions négatif')        
+        else
+                return msg .. ' ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz
+        end
+end
+ 
+return p
+
+Module:WMFRLuaInternal
+
+local p = {}
+ 
+function p.internal(frame, msg)
+        local args = frame:getParent().args
+        -- args[2] est le nombre de répétitions
+        local repet = tonumber(args[2])
+        if repet < 0 then
+                error('Nombre de répétitions négatif')        
+        elseif repet > 10 then
+                error('Nombre de répétitions trop élevé')        
+        else
+                local result = ''
+                for iter = 1, repet do
+                    result = result .. '*' .. msg .. ' ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz .. '\n'
+            end
+            return result
+        end
+end
+
+return p
+
+Module:WMFRLuaInternal
+
+local p = {}
+ 
+function p.internal(frame, msg)
+        local args = frame:getParent().args
+        -- args[2] est le nombre de répétitions
+        local repet = tonumber(args[2])
+        if repet < 0 then
+                error('Nombre de répétitions négatif')        
+        elseif repet > 10 then
+                error('Nombre de répétitions trop élevé')        
+        else
+                local result = ''
+                for iter = 1, repet do
+                    result = result .. '*' .. msg .. ' ' .. args[1] .. '! ' .. args.bar .. ' & ' .. args.baz .. '\n'
+            end
+            return result:gsub('Wiki', 'W')
+        end
+end
+
+function p.test(repet, msg)
+        local result = ''
+        for iter = 1, repet do
+                mw.log('iter' .. tostring(iter))
+                result = result .. '*' .. msg .. '\n'
+        end
+        return result:gsub('Wiki', 'W')
+end
+
+return p
+
+UTILISER LE DEBUGGER:
+
+    =p.test(1, 'coucou')
+
+    =p.test(2, 'Wikisource')
+
+    =#p.test(2, 'Wikisource')
+
+MONTRER L'HISTORIQUE
+
+TestLua
+
+{{#invoke:WMFRLua|iter|foo|bar|baz}}
+
+Module:WMFRLua
+
+local p = {}
+
+local int = require('Module:WMFRLuaInternal') 
+
+function p.foo(frame)
+        return int.internal(frame, 'Hello')
+end
+
+function p.toto(frame)
+        return int.internal(frame, 'Bye')
+end
+ 
+function p.iter(frame)
+        local result = ''
+        for index, value in ipairs(frame.args) do
+                result = result .. '* ' .. value .. '\n'
+        end
+        return result
+end
+ 
+return p
+
+
+Module:WMFRLua
+
+local p = {}
+
+local int = require('Module:WMFRLuaInternal') 
+
+function p.foo(frame)
+        return int.internal(frame, 'Hello')
+end
+
+function p.toto(frame)
+        return int.internal(frame, 'Bye')
+end
+ 
+function p.iter(frame)
+        local result = ''
+        for index, value in ipairs(frame.args) do
+                result = result .. '* ' .. value .. '\n'
+        end
+        return result
+end
+
+function p.iter2(frame)
+        local result = ''
+        for key, value in pairs(frame.args) do
+                result = result .. '* ' .. key .. ' => ' .. value .. '\n'
+        end
+        return result
+end
+ 
+return p
+
+TestLua
+
+{{#invoke:WMFRLua|iter2|foo=21|bar=42|baz=63}}
+
+Module:WMFRLua
+
+local p = {}
+
+local int = require('Module:WMFRLuaInternal') 
+
+function p.foo(frame)
+        return int.internal(frame, 'Hello')
+end
+
+function p.toto(frame)
+        return int.internal(frame, 'Bye')
+end
+ 
+function p.iter(frame)
+        local result = ''
+        for index, value in ipairs(frame.args) do
+                result = result .. '* ' .. value .. '\n'
+        end
+        return result
+end
+
+function p.iter2(frame)
+
+      local start = os.clock()
+
+        local result = ''
+        for key, value in pairs(frame.args) do
+                result = result .. '* ' .. key .. ' => ' .. value .. '\n'
+        end
+        mw.log('Internal time', os.clock() - start)
+        return result
+end
+ 
+return p
+
+--[===[
+    p.iter2(mw.getCurrentFrame():newChild({args={foo="bar"}}))
+aka
+    p.iter2(mw.getCurrentFrame():newChild{args={foo="bar"}})
+    
+    foo"bar"
+    
+toto.x(toto) ⇒ toto:x()
+foo({1, 2, 3}) ⇒ foo{1, 2, 3}
+toto.x(toto, {1, 2, 3}) ⇒ toto:x{1, 2, 3}
+foo('bar') ⇒ foo'bar'
+    
+]===]
+
+Module:WMFRLua
+
+
+local p = {}
+ 
+function p.pagename(frame)
+        return frame:preprocess('{{PAGENAME}}')
+end
+ 
+return p
+
+-- frame:expandTemplate
+
+Module:WMFRLua
+
+
+local p = {}
+ 
+function p.pagename()
+        return mw.title.getCurrentTitle().prefixedText
+end
+ 
+return p
+
+Wikidata
+Suite dimanche après-midi ! :o)
+
+    Title
+
+    HTML
+
+    Wikibase
+
+    Metatables
+
+    Test cases
+
+
+Wishlist d'Harmonia
+
+    subster un modèle appelant Wikidata (https://fr.wikipedia.org/wiki/Module:Tableau_qualificateurs)
+
+    pouvoir forcer le tri 1, 2, 3,.. 10, 11, 12 (numérique et non alphabétique) quand il y a et des données chiffrées et des données alphabétiques
+
+    https://fr.wikipedia.org/wiki/Discussion_mod%C3%A8le:Bibliographie#ISBN-10_et_ISBN-13 (c'est gérer le système de vérification entre les isbn 10 et 13 le problème).
+
+

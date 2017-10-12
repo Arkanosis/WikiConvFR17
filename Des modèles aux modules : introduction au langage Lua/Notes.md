@@ -14,3 +14,25 @@
 * test.wikimedia.org
 
 ## Plan
+
+### Modèle ?
+* Screenshot page WP avec modèles colorés (ébauche, portail, infobox)
+
+### Transclusion
+* Portail (écran coupé en 3 avec association par couleurs : code de l'article, code du modèle, screenshot)
+
+### Paramètres
+* Infobox (écran coupé en 3 avec association par couleurs : code de l'article + paramètres, code du modèle, screenshot)
+
+### Conditions
+* Exemple simple de #if
+
+### Compliqué
+* Exemple de strlen
+
+### Modules
+* Intro
+* https://test2.wikimedia.org
+
+### Lua
+
