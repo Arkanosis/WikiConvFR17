@@ -30,6 +30,12 @@
 				bottom: 1em;
 				right: 1em;
 			}
+			.reveal .slides img {
+				border: 0;
+			}
+			.reveal div div pre {
+				margin-top: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -38,22 +44,477 @@
 				<section>
 					<h2 style="margin-top: 5%">Des modèles aux modules :<br>introduction au langage Lua</h2>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 300.0px;"></a>
+						<a href="https://commons.wikimedia.org/wiki/File:ISS_after_STS-119_in_March_2009_2.jpg"><img src="images/ISS_after_STS-119_in_March_2009_2.jpg" style="width: 600.0px;"></a>
 						<br>
-						<small style="font-size: 40%">© FIXME, CC-BY 2.5</small>
+						<small style="font-size: 40%"><s>©</s> NASA, DP</small>
 						<br>
 						<a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — WikiConvention francophone 2017
 					</p>
 				</section>
 				<section>
-					<h2>Modèles ?</h2>
+					<h2>Modèle ?</h2>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
+						<a href="https://commons.wikimedia.org/wiki/File:Archives of American Art - George Pearse Ennis - 2086.jpg"><img src="images/Archives_of_American_Art_-_George_Pearse_Ennis_-_2086.jpg" style="width: 30%;"></a>
+						<br>
+						<small style="font-size: 40%"><s>©</s> US Works Progress Administration, DP</small>
 					</p>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Code wiki réutilisable</li>
+						<li class="fragment">… dans autant de pages que souhaité</li>
+						<li class="fragment">… y compris dans d'autres modèles</li>
 					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Où tester ?</h2>
+					<ul>
+						<li><a href="https://test.wikipedia.org/">https://test.wikipedia.org/</a></li>
+						<li><a href="https://test2.wikipedia.org/">https://test2.wikipedia.org/</a></li>
+					</ul>
+					<p class="fragment">
+						<a href="https://commons.wikimedia.org/wiki/File:No_1_rue_Royale,_Versailles,_Yvelines_78000,_France_2016.jpg"><img src="images/No_1_rue_Royale,_Versailles,_Yvelines_78000,_France_2016.jpg" style="width: 700px;"></a>
+						<br>
+						<small style="font-size: 40%">© besopha, CC-BY 2.0</small>
+					</p>
+					<ul>
+						<li class="fragment">Remplacer « Modèle: » par « Template: »</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèle</h2>
+					<div style="column-count: 3">
+						<div>
+							<pre><code style="height: 200px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:WCFR17_Bonjour</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 200px;">
+{{WCFR17_Bonjour}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 200px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<ul>
+						<li class="fragment">Simple à écrire</li>
+						<li class="fragment">Simple à utiliser</li>
+						<li class="fragment">On parle de « transclusion »</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèle</h2>
+					<ul>
+						<li>On peut transclure n'importe quelle page, pas seulement un modèle</li>
+					</ul>
+					<div style="column-count: 3" class="fragment">
+						<div>
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>WCFR17_Bonjour</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+{{:WCFR17_Bonjour}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<ul class="fragment">
+						<li>… même une page spéciale (si, si !)</li>
+					</ul>
+					<div style="column-count: 2" class="fragment">
+						<div>
+							<pre><code style="height: 400px;">
+=== Trois nouvelles pages ===
+
+{{Spécial:Nouvelles pages/3}}
+
+=== Three new pages ===
+
+{{Special:Newpages/3}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<p class="fragment">
+							<a href="images/Spécial.png"><img src="images/Spécial.png" style="width: 80%; margin-top:0;"></a>
+						</p>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_1.png"><img src="images/Palais_du_Rhin_1.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_2.png"><img src="images/Palais_du_Rhin_2.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_3.png"><img src="images/Palais_du_Rhin_3.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_4.png"><img src="images/Palais_du_Rhin_4.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_5.png"><img src="images/Palais_du_Rhin_5.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_6.png"><img src="images/Palais_du_Rhin_6.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_7.png"><img src="images/Palais_du_Rhin_7.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_8.png"><img src="images/Palais_du_Rhin_8.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_9.png"><img src="images/Palais_du_Rhin_9.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_10.png"><img src="images/Palais_du_Rhin_10.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_11.png"><img src="images/Palais_du_Rhin_11.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Parser functions</h2>
+					<div style="column-count: 2" class="fragment">
+						<div>
+							<pre><code style="height: 150px;">
+{{#if: | quelque chose | rien}}
+{{#if: truc | quelque chose | rien}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+rien
+quelque chose
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 2" class="fragment">
+						<div>
+							<pre><code style="height: 150px;">
+{{#ifexpr: 1 = 2 | Ça alors ! }}
+{{#ifexpr: 0 = 0 | La tête à toto }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+
+La tête à toto
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 2" class="fragment">
+						<div>
+							<pre><code style="height: 150px;">
+{{#ifexist: Utilisateur:Arkanosis
+ | J'existe
+ | Je n'existe pas }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+J'existe
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>strlen</h2>
+					<ul>
+						<li>Compter le nombre de lettres d'une chaîne de caractères</li>
+						<li class="fragment">Refusé par les développeurs</li>
+					</ul>
+					<div class="fragment">
+						<pre><code>
+<noinclude><!--
+-=============================================================
+-  Strlen_quick - Get length of a character string quickly
+-=============================================================
+--                        (see NOTES at bottom)
+--></noinclude>{{
+#ifeq: x{{{1}}}|x{{padleft:{{{1}}}|20}}
+| {{#ifeq: x{{{1}}}|x{{padleft:{{{1}}}|30}}
+  | {{#ifeq: x{{{1}}}|x{{padleft:{{{1}}}|40}}
+    | {{#switch: x{{{1}}}
+      | {{padleft:|41|x{{{1}}}}} = 40
+      | {{padleft:|42|x{{{1}}}}} = 41
+      | {{padleft:|43|x{{{1}}}}} = 42
+      | {{padleft:|44|x{{{1}}}}} = 43
+      | {{padleft:|45|x{{{1}}}}} = 44
+      | {{padleft:|46|x{{{1}}}}} = 45
+      | {{padleft:|47|x{{{1}}}}} = 46
+      | {{padleft:|48|x{{{1}}}}} = 47
+      | {{padleft:|49|x{{{1}}}}} = 48
+      | {{padleft:|50|x{{{1}}}}} = 49
+      | {{padleft:|51|x{{{1}}}}} = 50
+      | {{padleft:|52|x{{{1}}}}} = 51
+      | {{padleft:|53|x{{{1}}}}} = 52
+      | {{padleft:|54|x{{{1}}}}} = 53
+      | {{padleft:|55|x{{{1}}}}} = 54
+      | {{padleft:|56|x{{{1}}}}} = 55
+      | {{padleft:|57|x{{{1}}}}} = 56
+      | {{padleft:|58|x{{{1}}}}} = 57
+      | {{padleft:|59|x{{{1}}}}} = 58
+      | {{padleft:|60|x{{{1}}}}} = 59
+      | {{padleft:|61|x{{{1}}}}} = 60
+      | {{padleft:|62|x{{{1}}}}} = 61
+      | {{padleft:|63|x{{{1}}}}} = 62
+      | {{padleft:|64|x{{{1}}}}} = 63
+      | {{padleft:|65|x{{{1}}}}} = 64
+      | {{padleft:|66|x{{{1}}}}} = 65
+      | {{padleft:|67|x{{{1}}}}} = 66
+      | {{padleft:|68|x{{{1}}}}} = 67
+      | {{padleft:|69|x{{{1}}}}} = 68
+      | {{padleft:|70|x{{{1}}}}} = 69
+      | {{padleft:|71|x{{{1}}}}} = 70
+      | #default= {{{extra|-1}}} <!--when > 70 -->
+      }}<!--endsw 40's++ -->
+    | {{#switch: x{{{1}}}
+      | {{padleft:|31|x{{{1}}}}} = 30
+      | {{padleft:|32|x{{{1}}}}} = 31
+      | {{padleft:|33|x{{{1}}}}} = 32
+      | {{padleft:|34|x{{{1}}}}} = 33
+      | {{padleft:|35|x{{{1}}}}} = 34
+      | {{padleft:|36|x{{{1}}}}} = 35
+      | {{padleft:|37|x{{{1}}}}} = 36
+      | {{padleft:|38|x{{{1}}}}} = 37
+      | {{padleft:|39|x{{{1}}}}} = 38
+      | #default= 39
+      }}<!--endsw 30's-->
+    }}<!--endifeq 40-->
+  | {{#switch: x{{{1}}}
+    | {{padleft:|21|x{{{1}}}}} = 20
+    | {{padleft:|22|x{{{1}}}}} = 21
+    | {{padleft:|23|x{{{1}}}}} = 22
+    | {{padleft:|24|x{{{1}}}}} = 23
+    | {{padleft:|25|x{{{1}}}}} = 24
+    | {{padleft:|26|x{{{1}}}}} = 25
+    | {{padleft:|27|x{{{1}}}}} = 26
+    | {{padleft:|28|x{{{1}}}}} = 27
+    | {{padleft:|29|x{{{1}}}}} = 28
+    | #default= 29
+    }}<!--endsw 20's-->
+  }}<!--endifeq 30-->
+| {{#ifeq: x{{{1}}}|x{{padleft:{{{1}}}|10}}
+  | {{#switch: x{{{1}}}
+    | {{padleft:|18|x{{{1}}}}} = 17
+    | {{padleft:|19|x{{{1}}}}} = 18
+    | {{padleft:|17|x{{{1}}}}} = 16
+    | {{padleft:|20|x{{{1}}}}} = 19
+    | {{padleft:|16|x{{{1}}}}} = 15
+    | {{padleft:|15|x{{{1}}}}} = 14
+    | {{padleft:|14|x{{{1}}}}} = 13
+    | {{padleft:|13|x{{{1}}}}} = 12
+    | {{padleft:|12|x{{{1}}}}} = 11
+    | #default= 10 <!--when >= 10 and none of above-->
+     }}<!--endsw 10's++ -->
+  | {{#switch: x{{{1}}}
+    | {{padleft:|10|x{{{1}}}}} = 9
+    | {{padleft:|9|x{{{1}}}}} = 8
+    | {{padleft:|8|x{{{1}}}}} = 7
+    | {{padleft:|7|x{{{1}}}}} = 6
+    | {{padleft:|6|x{{{1}}}}} = 5
+    | {{padleft:|5|x{{{1}}}}} = 4
+    | {{padleft:|4|x{{{1}}}}} = 3
+    | {{padleft:|3|x{{{1}}}}} = 2
+    | #default= 1
+    }}<!--endsw 1's-->
+  }}<!--endifeq 10-->
+}}<!--endifeq 20--><noinclude><!--
+-=============================================================
+--NOTES
+--         See talk-page: [[Template_talk:Strlen_quick]].
+--
+--    [ These comments are skipped by <noinclude> so they will
+--      be omitted & not sent in a formatted Internet page. ]
+--
+-- NOTE A1: This template counts the length of string {1} by
+--      comparing with the string truncated to 'n' long in a
+--      #switch for each set of lengths of {padleft:|n|{1} }.
+--      The first match will exit the #switch with the length
+--      number and exit the nested end-ifs. Max length is 70.
+--
+-- NOTE N2: This template was designed to use minimal levels
+--      as 5, to avoid the "expansion depth limit" when used
+--      in very large templates. By comparison, {str_len} was
+--      using over 9-13 levels of 40 total, during 2009-2011.
+--
+-- NOTE P3: To speed the results, the check for length is based
+--      on probability of an average length of 17/18, as found
+--      in Wikipedia titles, where length 5 is as rare as 31
+--      or longer. The average search is 6.5 uses of {padleft}
+--      but the weighted average for actual titles is near 4.
+--      When most strings are > 49, then use {str_len}.
+--
+-- NOTE S4: This template CANNOT be subst-substituted by using
+--      {{subst:strlen_short|...}} to save only the results, or
+--      {{{{{|safesubst:}}}strlen_short}} using blank parameter.
+--
+--------------------------------------------------------------
+--HISTORY:
+--30Jan2011 Created to get length quickly in few nest levels.
+--31Jan2011 Removed spurious newline before <noinclude>.
+--31Jan2011 Set to return {{{extra|-1}}} when > 70.
+--
+-->{{documentation}}
+
+[[Category:Templates|{{PAGENAME}}]]
+</noinclude>
+						</code></pre>
+						<small style="font-size: 40%"><code>Template:Strlen_quick</code> (wikicode), © Wikid77, CC-BY-SA 3.0</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-background="images/1-month-old_kitten_33.jpg">
+					<!-- https://commons.wikimedia.org/wiki/File:1-month-old_kitten_33.jpg -->
+					<small style="font-size: 50%" class="caption">© 0x010C, CC-BY-SA 4.0</small>
+				</section>
+				<section>
+					<h2>Modèles : conclusion</h2>
+					<ul>
+						<li>La complexité du code augmente avec celle de la fonctionnalité<ul>
+							<li class="fragment">Facile pour les choses simples</li>
+							<li class="fragment">Difficile pour les choses modérément complexes</li>
+							<li class="fragment">Impossible pour les choses complexes</li>
+						</ul></li>
+					</ul>
+					<p class="fragment">
+						<a href="https://commons.wikimedia.org/wiki/File:Natural_exponential_function.png"><img src="images/Natural_exponential_function.png" style="width: 30%;"></a>
+						<br>
+						<small style="font-size: 40%">© Picknick, CC-BY-SA 4.0</small>					</p>
+					<ul>
+						<li class="fragment">Écriture seule (write-only)</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-background="images/Thats_all_folks.svg.png">
+					<!-- https://commons.wikimedia.org/wiki/File:Thats_all_folks.svg -->
+					<small style="font-size: 50%" class="caption"><s>©</s> Warner Bros, DP</small>
+				</section>
+				<section data-background="images/just_kidding.jpg">
+					<small style="font-size: 50%" class="caption">© Auteur inconnu</small>
+				</section>
+				<!-- TODO FIXME intro Lua (langue, etc.) -->
+				<!-- TODO FIXME lua bonjour strasbourg -->
+				<!-- TODO FIXME invoke -->
+				<!-- TODO FIXME comparaison simple -->
+				<!-- TODO FIXME comparaison paramètre positionnel / nommé -->
+				<!-- TODO FIXME comparaison #if -->
+				<section>
+					<h2>Lua</h2>
+					<pre class="fragment"><code>
+local p = {}
+
+function p.foo()
+    return 'Hello Lua!'
+end
+
+return p
+					</code></pre>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
@@ -118,6 +579,108 @@
 					<ul>
 						<li>Lorem</li>
 						<li class="fragment">Ipsum</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèle vs module</h2>
+					<div style="column-count: 2">
+						<p>
+							<a href="https://commons.wikimedia.org/wiki/File:Birmingham_New_Street_Station_-_Queens_Drive_-_Portacabins_(5336285722).jpg"><img src="images/Birmingham_New_Street_Station_-_Queens_Drive_-_Portacabins_(5336285722).jpg" style="height: 400px;"></a>
+							<br>
+							<small style="font-size: 40%">© Elliott Brown, CC-BY 2.0</small>
+						</p>
+						<p>
+							<a href="https://commons.wikimedia.org/wiki/File:Legomodell_av_Eidsvoldsbygningen.jpg"><img src="images/Legomodell_av_Eidsvoldsbygningen.jpg" style="height: 400px;"></a>
+							<br>
+							<small style="font-size: 40%">© Øyvind Holmstad, CC-BY-SA 4.0</small>
+						</p>
+					</div>
+					<ul>
+						<li>Morceaux de pages « préfabriqués »</li>
+						<li class="fragment">… vs éléments composables facilement</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèle vs module</h2>
+					<div>
+					<h3 style="font-size: 80%">Fonctionnalité simple</h3>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Modèle</th>
+									<th>Module</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Débutant</th>
+									<td style="color: orange">Difficile</td>
+									<td style="color: orange">Difficile</td>
+								</tr>
+								<tr>
+									<th>Intermédiaire</th>
+									<td style="color: green">Facile</td>
+									<td style="color: orange">Difficile</td>
+								</tr>
+								<tr>
+									<th>Expert</th>
+									<td style="color: green">Facile</td>
+									<td style="color: green">Facile</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="fragment">
+						<h3 style="font-size: 80%">Fonctionnalité complexe</h3>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Modèle</th>
+									<th>Module</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Débutant</th>
+									<td style="color: red">Impossible</td>
+									<td style="color: orange">Difficile</td>
+								</tr>
+								<tr>
+									<th>Intermédiaire</th>
+									<td style="color: red">Impossible</td>
+									<td style="color: orange">Difficile</td>
+								</tr>
+								<tr>
+									<th>Expert</th>
+									<td style="color: red">Impossible</td>
+									<td style="color: green">Facile</td>
+								</tr>
+							</tbody>
+						</table>
+					<div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Aller plus loin</h2>
+					<p>
+						<a href="https://commons.wikimedia.org/wiki/File:Space_Shuttle_Discovery_leaps_from_Launch_Pad_39B_on_the_Return_to_Flight_mission_STS-114.jpg"><img src="images/Space_Shuttle_Discovery_leaps_from_Launch_Pad_39B_on_the_Return_to_Flight_mission_STS-114.jpg" style="width: 600px;"></a>
+						<br>
+						<small style="font-size: 40%"><s>©</s> NASA, DP</small>
+					</p>
+					<ul>
+						<li><a href="https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual">https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual</a></li>
+						<li class="fragment"><a href="https://www.mediawiki.org/wiki/Extension:Wikibase_Client/Lua">https://www.mediawiki.org/wiki/Extension:Wikibase_Client/Lua</a></li>
+						<li class="fragment"><a href="https://fr.wikiversity.org/wiki/Initiation_au_Lua_avec_Scribunto">https://fr.wikiversity.org/wiki/Initiation_au_Lua_avec_Scribunto</a></li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
@@ -126,9 +689,9 @@
 				<section>
 					<h2>~~~~</h2>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 500.0px;"></a>
+						<a href="https://commons.wikimedia.org/wiki/File:Coffee arabica 12.10.2011 14-01-6.jpg"><img src="images/Coffee_arabica_12.10.2011_14-01-6.jpg" style="width: 500.0px;"></a>
 						<br>
-						<small style="font-size: 40%">© FIXME, CC-BY-SA 3.0</small>
+						<small style="font-size: 40%">© Dirk Ingo Franke, CC-BY-SA 3.0</small>
 					</p>
 					<ul>
 						<li><a href="https://fr.wikipedia.org/wiki/User_talk:Arkanosis">frwp.org/User:Arkanosis</a></li>
