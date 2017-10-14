@@ -325,7 +325,7 @@ J'existe
 						<li class="fragment">Refusé par les développeurs</li>
 					</ul>
 					<div class="fragment">
-						<pre><code>
+						<pre><code style="height:600px; max-height:600px;">
 <noinclude><!--
 -=============================================================
 -  Strlen_quick - Get length of a character string quickly
@@ -467,9 +467,141 @@ J'existe
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
+				<section>
+					<h2>strlen</h2>
+					<div>
+						<pre><code style="height:700px; max-height:700px;">
+{{{{{|safesubst:}}}#ifeq: x{{{{{|safesubst:}}}#if:x|{{{1|}}}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| 500 }}   <noinclude><!-- str >= 500 --></noinclude>
+| 500
+| {{{{{|safesubst:}}}str len/core   <noinclude><!-- xx0-xx9 --></noinclude>
+  |{{{{{|safesubst:}}}#if:x|{{{1|}}}}}
+  | {{{{{|safesubst:}}}str len/core   <noinclude><!-- x0x-x9x --></noinclude>
+    |{{{{{|safesubst:}}}#if:x|{{{1|}}}}}
+    | {{{{{|safesubst:}}}str len/core   <noinclude><!-- 0xx-4xx --></noinclude>
+      |{{{{{|safesubst:}}}#if:x|{{{1|}}}}}
+      | | hundreds
+      }}| tens
+    }}| ones
+  }}
+}}<noinclude>
+
+{{documentation}}
+<!-- Add categories and interwikis to the /doc subpage, not here! -->
+</noinclude>
+
+
+<noinclude>{{historical}}</noinclude>{{{{{|safesubst:}}}#switch: {{{3|}}}
+
+| hundreds =   <noinclude><!-- 0xx-4xx, using linear search since most strings will probably be less than 100 bytes. --></noinclude>
+{{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| 100 }}  <noinclude><!--str >= x--></noinclude>
+| {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| 200 }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| 300 }}
+    | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| 400 }}
+      | 4
+      | 3
+      }}
+    | 2
+    }}
+  | 1
+  }}
+|   <noinclude><!-- Don't return 0, since tens and ones don't want a leading 0 in parameter 2. --></noinclude>
+}}
+
+| tens =   <noinclude><!-- x0x-x9x, using linear search for 0x-3x, binary search for 4x-9x, since most strings will probably be 0-39 bytes. --></noinclude>
+{{{2|}}}{{
+{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}10 }}  <noinclude><!--str >= x--></noinclude>
+| {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}20 }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}30 }}
+    | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}40 }}
+      | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}60 }}
+        | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}80 }}
+          | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}90 }}
+            | 9
+            | 8
+            }}
+          | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}70 }}
+            | 7
+            | 6
+            }}
+          }}
+        | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}50 }}
+          | 5
+          | 4
+          }}
+        }}
+      | 3
+      }}
+    | 2
+    }}
+  | 1
+  }}
+| {{{{{|safesubst:}}}#if:{{{2|}}}|0}}   <noinclude><!-- Only return 0 if >=100, since ones don't want a leading 0 in parameter 2. --></noinclude>
+}}
+
+| ones =   <noinclude><!-- xx0-xx9, using binary search. --></noinclude>
+{{{2|}}}{{
+{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}4 }}  <noinclude><!--str >= x--></noinclude>
+| {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}6 }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}8 }}
+    | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}9 }}
+      | 9
+      | 8
+      }}
+    | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}7 }}
+      | 7
+      | 6
+      }}
+    }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}5 }}
+    | 5
+    | 4
+    }}
+  }}
+| {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}2 }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}3 }}
+    | 3
+    | 2
+    }}
+  | {{{{{|safesubst:}}}#ifeq: x{{{1|}}} | x{{{{{|safesubst:}}}padleft:{{{1|}}}| {{{2|}}}1 }}
+    | 1
+    | 0
+    }}
+  }}
+}}
+
+}}<noinclude>
+{{documentation}}
+<!-- Add categories and interwikis to the /doc subpage, not here! -->
+</noinclude>
+
+						</code></pre>
+						<small style="font-size: 40%"><code>Template:Str len</code>, <code>Template:Str len/core</code> (wikicode), © Dragons flight et al., CC-BY-SA 3.0</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
 				<section data-background="images/1-month-old_kitten_33.jpg">
 					<!-- https://commons.wikimedia.org/wiki/File:1-month-old_kitten_33.jpg -->
 					<small style="font-size: 50%" class="caption">© 0x010C, CC-BY-SA 4.0</small>
+				</section>
+				<section>
+					<h2>Performances</h2>
+					<ul>
+						<li>Parser certains modèles peut prendre 20~30 secondes</li>
+						<li class="fragment">À défaut de cache, faire le rendu d'une page peut prendre des minutes</li>
+						<li class="fragment">Le cache donne parfois des résultats « faux » (exemple : références)</li>
+						<li class="fragment">Limitation nécessaire du nombre de transclusions par page</li>
+						<li class="fragment">Les administrateurs système doivent tirer la sonnette d'alarme</li>
+					</ul>
+					<p class="fragment">
+						<a href="https://commons.wikimedia.org/wiki/File:Fire-Lite_BG-10_agent_release_message.jpg"><img src="images/Fire-Lite_BG-10_agent_release_message.jpg" style="height: 400px;"></a>
+						<br>
+						<small style="font-size: 40%">© Alex Gorzen, CC-BY-SA 2.0</small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
 				</section>
 				<section>
 					<h2>Modèles : conclusion</h2>
@@ -483,9 +615,11 @@ J'existe
 					<p class="fragment">
 						<a href="https://commons.wikimedia.org/wiki/File:Natural_exponential_function.png"><img src="images/Natural_exponential_function.png" style="width: 30%;"></a>
 						<br>
-						<small style="font-size: 40%">© Picknick, CC-BY-SA 4.0</small>					</p>
+						<small style="font-size: 40%">© Picknick, CC-BY-SA 4.0</small>
+					</p>
 					<ul>
 						<li class="fragment">Écriture seule (write-only)</li>
+						<li class="fragment">… et en plus, c'est lent !</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
@@ -498,12 +632,79 @@ J'existe
 				<section data-background="images/just_kidding.jpg">
 					<small style="font-size: 50%" class="caption">© Auteur inconnu</small>
 				</section>
-				<!-- TODO FIXME intro Lua (langue, etc.) -->
+				<section>
+					<h2>Lua ?</h2>
+					<p>
+						<a href="https://commons.wikimedia.org/wiki/File:Lua-Logo.svg"><img src="images/Lua-Logo.svg.png" style="width: 300px;"></a>
+						<br>
+						<small style="font-size: 40%"><s>©</s> Alexandre Nakonechnyj & Lua-Team, DP</small>
+					</p>
+					<ul>
+						<li class="fragment">Langage de programmation</li>
+						<li class="fragment">« Lune » en portugais (auteurs brésiliens)</li>
+						<li class="fragment">Licence permissive (MIT)</li>
+						<li class="fragment">Léger, facile à intégrer<ul>
+							<li class="fragment">… dans les jeux vidéos (WoW, FarCry…)</li>
+							<li class="fragment">… dans le gestionnaire de fenêtres Awesome</li>
+							<li class="fragment">… et dans MediaWiki !</li>
+						</ul></li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Pourquoi pas PHP, JavaScript ou Python ?</h2>
+					<div style="column-count: 3">
+						<p style="margin-top: 0;">
+							<a href="https://commons.wikimedia.org/wiki/File:PHP-logo.svg"><img src="images/1280px-PHP-logo.svg.png" style="height: 250px;"></a>
+							<br>
+							<small style="font-size: 40%">© Colin Viebrock, CC-BY-SA 4.0</small>
+						</p>
+						<p>
+							<a href="https://commons.wikimedia.org/wiki/File:JavaScript-logo.png"><img src="images/JavaScript-logo.png" style="height: 250px;"></a>
+							<br>
+							<small style="font-size: 40%"><s>©</s> Chris Williams, DP</small>
+						</p>
+						<p>
+							<a href="https://commons.wikimedia.org/wiki/File:Python.svg"><img src="images/Python.svg.png" style="height: 250px;"></a>
+							<br>
+							<small style="font-size: 40%">© Tango! project, CC-BY-SA 3.0</small>
+						</p>
+					</div>
+					<ul>
+						<li class="fragment">Plus facile à intégrer que PHP et JavaScript</li>
+						<li class="fragment">Plus performant que PHP et Python</li>
+						<li class="fragment">Limitation possible de la mémoire et du processeur utilisés</li>
+						<li class="fragment">Limitation des risques de sécurité</li>
+						<li class="fragment">Facile à apprendre (ressemble un peu à JavaScript)</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scribunto</h2>
+					<ul>
+						<li class="fragment">Extension pour MediaWiki</li>
+						<li class="fragment">Développée par VasilievVV (vvv) et Tim Starting</li>
+						<li class="fragment">Conçue en 2012 et déployée en 2013</li>
+					</ul>
+					<p class="fragment">
+						<a href="https://en.wikipedia.org/wiki/User:Dragons_flight/Lua_performance"><img src="images/Performance.png" style="width: 70%;"></a>
+						<br>
+						<small style="font-size: 40%">© Dragons flight, CC-BY-SA 3.0</small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
 				<!-- TODO FIXME lua bonjour strasbourg -->
 				<!-- TODO FIXME invoke -->
 				<!-- TODO FIXME comparaison simple -->
 				<!-- TODO FIXME comparaison paramètre positionnel / nommé -->
 				<!-- TODO FIXME comparaison #if -->
+				<!-- TODO FIXME screenshot ACE editor script error / backtrace -->
 				<section>
 					<h2>Lua</h2>
 					<pre class="fragment"><code>
