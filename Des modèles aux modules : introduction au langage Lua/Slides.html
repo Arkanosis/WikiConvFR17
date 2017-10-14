@@ -322,7 +322,7 @@ J'existe
 					<h2>strlen</h2>
 					<ul>
 						<li>Compter le nombre de lettres d'une chaîne de caractères</li>
-						<li class="fragment">Refusé par les développeurs</li>
+						<li class="fragment">Ajout de fonctionnalité refusé par les développeurs</li>
 					</ul>
 					<div class="fragment">
 						<pre><code style="height:600px; max-height:600px;">
@@ -687,6 +687,7 @@ J'existe
 					<h2>Scribunto</h2>
 					<ul>
 						<li class="fragment">Extension pour MediaWiki</li>
+						<li class="fragment">« Qu'ils écrivent » en latin (auteurs ita… non, aucun rapport)</li>
 						<li class="fragment">Développée par VasilievVV (vvv) et Tim Starting</li>
 						<li class="fragment">Conçue en 2012 et déployée en 2013</li>
 					</ul>
@@ -875,7 +876,7 @@ Bonjour Strasbourg !
 					<div style="column-count: 3">
 						<div>
 							<pre><code style="height: 150px;">
-Bonjour {{qui}} de {{{1}}} !
+Bonjour {{{qui}}} de {{{1}}} !
 							</code></pre>
 							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
 						</div>
@@ -1099,12 +1100,12 @@ return p
 					<h2>Fonctions locales</h2>
 					<div style="column-count: 1">
 						<div>
-							<pre><code style="height: 600px; max-height: 500px">
+							<pre><code style="height: 500px; max-height: 500px">
 local p = {}
 
-local function internal(frame, message)
+local function internal(frame, mot)
     local args = frame:getParents().args
-    return message .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
+    return mot .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
 end
 
 function p.bonjour(frame)
@@ -1128,12 +1129,207 @@ return p
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
-				<!-- TODO FIXME internal dans un autre fichier -->
-				<!-- TODO FIXME comparaison #if -->
-				<!-- TODO FIXME for -->
+				<section>
+					<h2>Import de modules</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.message(frame, mot)
+    local args = frame:getParents().args
+    return mot .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Message</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 400px; max-height: 400px">
+local p = {}
+
+local internal = require('Module:Message')
+
+function p.bonjour(frame)
+    return internal.message(frame, 'Bonjour')
+end
+
+function p.salut(frame)
+    return internal.message(frame, 'Salut')
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Parserfunctions vs<br> structures de contrôle</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 150px">
+{{#if: {{{qui}}}
+ | Bonjour {{{qui}}} !
+ | Bonjour cher inconnu ! }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 400px; max-height: 400px">
+local p = {}
+
+function p.bonjour(frame)
+    if frame.args.qui ~= nil then
+        return 'Bonjour ' .. frame.args.qui .. ' !'
+    else
+        return 'Bonjour cher inconnu !'
+    end
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Parserfunctions vs<br> structures de contrôle</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 200px;">
+{{#if: {{{qui}}}
+ | Bonjour {{{qui}}} !
+ | {{#if: {{{quidautre}}}
+    | Bonjour {{{quidautre}}} !
+    | Bonjour cher inconnu ! }} }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 400px; max-height: 400px">
+local p = {}
+
+function p.bonjour(frame)
+    if frame.args.qui ~= nil then
+        return 'Bonjour ' .. frame.args.qui .. ' !'
+    elseif frame.args.quidautre ~= nil then
+        return 'Bonjour ' .. frame.args.quidautre .. ' !'
+    else
+        return 'Bonjour cher inconnu !'
+    end
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Boucles</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 750px; max-height: 750px">
+local p = {}
+
+function p.bonjour(frame)
+
+    local repetitions = tonumber(frame.args.repetitions)
+
+    if repetitions < 0 then
+        error('Nombre de répétitions négatif')
+
+    elseif repetitions > 10 then
+        error('Nombre de répétitions trop élevé')
+
+    else
+        local resultat = ''
+
+        for iter = 1, repetitions do
+            resultat = resultat .. '* Bonjour ' .. frame.args.qui .. ' !\n'
+        end
+
+        return resultat
+    end
+
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Boucles</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;">
+{{#invoke:Bonjour|bonjour|qui=Strasbourg|repetitions=-1}}
+----
+{{#invoke:Bonjour|bonjour|qui=Strasbourg|repetitions=3}}
+----
+{{#invoke:Bonjour|bonjour|qui=Strasbourg|repetitions=42}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Bonjour</code> (wikicode)</small>
+						</div>
+					</div>
+					<p class="fragment">
+						<a href="images/Boucle.png"><img src="images/Boucle.png" style="width: 70%;"></a>
+						<br>
+						<small style="font-size: 40%"><code>Bonjour</code> (rendu)</small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
 				<!-- TODO FIXME debugger -->
 				<!-- TODO FIXME ipairs, pairs -->
-				<!-- TODO strlen -->
+				<section>
+					<h2>Strlen</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.strlen(frame)
+    return mw.ustring.len(p.args[1])
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Strlen</code> (Lua)</small>
+						</div>
+						<p class="fragment">
+							<a href="https://pixabay.com/fr/nain-paix-printemps-jardin-humeur-1336356/"><img src="images/dwarf-1336356_1920.jpg" style="height: 400px;"></a>
+							<br>
+							<small style="font-size: 40%"><s>©</s> stux, DP</small>
+						</p>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
 				<!-- TODO gsub -->
 				<!-- TODO os.clock -->
 				<!-- TODO preprocess / expandTemplate -->
