@@ -699,92 +699,448 @@ J'existe
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
-				<!-- TODO FIXME lua bonjour strasbourg -->
-				<!-- TODO FIXME invoke -->
-				<!-- TODO FIXME comparaison simple -->
-				<!-- TODO FIXME comparaison paramètre positionnel / nommé -->
-				<!-- TODO FIXME comparaison #if -->
-				<!-- TODO FIXME screenshot ACE editor script error / backtrace -->
+				<section data-background="images/Klettern_hms.jpg">
+					<small style="font-size: 50%" class="caption">© Oliver Merkel, CC-BY-SA 3.0</small>
+				</section>
 				<section>
-					<h2>Lua</h2>
-					<pre class="fragment"><code>
+					<h2>Bonjour monde !</h2>
+					<div style="column-count: 3">
+						<div>
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour_monde</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+{{Bonjour monde}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 3">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
 local p = {}
 
-function p.foo()
-    return 'Hello Lua!'
+function p.bonjour()
+    return 'Bonjour Strasbourg !'
 end
 
 return p
-					</code></pre>
-					<p>
-						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
-					</p>
-				</section>
-				<section>
-					<h2>FIXME</h2>
-					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
-					</p>
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour_monde</code> (Lua)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+{{#invoke:Bonjour monde|bonjour}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Intérêt discutable pour les cas simples</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
 				<section>
-					<h2>FIXME</h2>
+					<h2>Bonjour $MONDE !</h2>
+					<div style="column-count: 3">
+						<div>
+							<pre><code style="height: 100px;">
+Bonjour {{{qui}}} !
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+{{Bonjour|qui=Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. frame.args.qui .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 2">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+{{#invoke:Bonjour
+ |bonjour
+ |qui= Strasbourg }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
+				</section>
+				<section>
+					<h2>Bonjour $1 !</h2>
+					<div style="column-count: 3">
+						<div>
+							<pre><code style="height: 100px;">
+Bonjour {{{1}}} !
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+{{Bonjour|Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 100px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. frame.args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 2">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+{{#invoke:Bonjour
+ |bonjour
+ |Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+Bonjour Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME screenshot ACE editor script error / backtrace -->
+				<section>
+					<h2>Bonjour $MONDE et $1 !</h2>
+					<div style="column-count: 3">
+						<div>
+							<pre><code style="height: 150px;">
+Bonjour {{qui}} de {{{1}}} !
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Bonjour</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{Bonjour
+ |qui=les wikimédiens
+ |Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+Bonjour les wikimédiens de Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. frame.args.qui .. ' de ' .. frame.args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 2">
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{#invoke:Bonjour
+ |bonjour
+ |qui=les wikimédiens
+ |Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+Bonjour les wikimédiens de Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Bonjour $MONDE et $1 !</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;">
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. frame.args.qui .. ' de ' .. frame.args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 3">
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{#invoke:Bonjour
+ |bonjour
+ |qui= {{{qui}}}
+ |{{{1}}} }}
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{Bonjour
+ |qui=les wikimédiens
+ |Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+Bonjour les wikimédiens de Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Transparent pour l'utilisateur</li>
+						<li class="fragment">Un peu verbeux</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
 				<section>
-					<h2>FIXME</h2>
-					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
-					</p>
+					<h2>Bonjour $@ !</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;" data-noescape>
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. frame<mark>:getParents()</mark>.args.qui .. ' de ' .. frame<mark>:getParents()</mark>.args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 3">
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{#invoke:Bonjour|bonjour}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{Bonjour
+ |qui=les wikimédiens
+ |Strasbourg}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+						</div>
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+Bonjour les wikimédiens de Strasbourg !
+							</code></pre>
+							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
+						</div>
+					</div>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Transparent pour l'utilisateur</li>
+						<li class="fragment">Transparent pour le modèle</li>
 					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-background="images/Montagu_rock.jpg">
+					<small style="font-size: 50%" class="caption"><s>©</s> AfricanInformer, DP</small>
+				</section>
+				<section>
+					<h2>Variables locales</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;" data-noescape>
+local p = {}
+
+function p.bonjour(frame)
+    return 'Bonjour ' .. <mark>frame:getParents().args</mark>.qui .. ' de ' .. <mark>frame:getParents().args</mark>[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 250px;" data-noescape>
+local p = {}
+
+function p.bonjour(frame)
+    local args = <mark>frame:getParents().args</mark>
+    return 'Bonjour ' .. <mark>args</mark>.qui .. ' de ' .. <mark>args</mark>[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
 				<section>
-					<h2>FIXME</h2>
-					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
-					</p>
-					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
-					</ul>
+					<h2>Fonctions multiples</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 400px;">
+local p = {}
+
+function p.bonjour(frame)
+    local args = frame:getParents().args
+    return 'Bonjour ' .. args.qui .. ' de ' .. args[1] .. ' !'
+end
+
+function p.salut(frame)
+    local args = frame:getParents().args
+    return 'Salut ' .. args.qui .. ' de ' .. args[1] .. ' !'
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
+					<div style="column-count: 1">
+						<div class="fragment">
+							<pre><code style="height: 150px;">
+{{#invoke:Bonjour|salut}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Modèle:Test</code> (wikicode)</small>
+						</div>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
 				<section>
-					<h2>FIXME</h2>
-					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
-					</p>
+					<h2>Fonctions locales</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 600px; max-height: 500px">
+local p = {}
+
+local function internal(frame, message)
+    local args = frame:getParents().args
+    return message .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
+end
+
+function p.bonjour(frame)
+    return internal(frame, 'Bonjour')
+end
+
+function p.salut(frame)
+    return internal(frame, 'Salut')
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Bonjour</code> (Lua)</small>
+						</div>
+					</div>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Réduit la redondance</li>
+						<li class="fragment">Facilite les corrections et améliorations</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
+				<!-- TODO FIXME internal dans un autre fichier -->
+				<!-- TODO FIXME comparaison #if -->
+				<!-- TODO FIXME for -->
+				<!-- TODO FIXME debugger -->
+				<!-- TODO FIXME ipairs, pairs -->
+				<!-- TODO strlen -->
+				<!-- TODO gsub -->
+				<!-- TODO os.clock -->
+				<!-- TODO preprocess / expandTemplate -->
+				<!-- TODO title -->
+				<!-- TODO wikibase -->
+				<!-- TODO metatable -->
+				<!-- TODO tests cases -->
 				<section>
 					<h2>Modèle vs module</h2>
 					<div style="column-count: 2">
