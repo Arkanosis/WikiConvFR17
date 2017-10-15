@@ -36,6 +36,7 @@
 		</style>
 	</head>
 	<body>
+	<!-- TODO FIXME images pour aérer la présentation -->
 		<div class="reveal">
 			<div class="slides">
 				<section>
@@ -57,22 +58,372 @@
 					</p>
 				</section>
 				<section>
-					<h2>FIXME</h2>
+					<h2>JavaScript ?</h2>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:FIXME"><img src="images/FIXME" style="width: 30%;"></a>
+						<a href="https://commons.wikimedia.org/wiki/File:JavaScript-logo.png"><img src="images/JavaScript-logo.png" style="height: 300px;"></a>
+						<br>
+						<small style="font-size: 40%"><s>©</s> Chris Williams, DP</small>
 					</p>
 					<ul>
-						<li>Lorem</li>
-						<li class="fragment">Ipsum</li>
+						<li class="fragment">Langage de programmation inventé en 1995</li>
+						<li class="fragment">Standardisé par l'ECMA sous le nom d'ECMAScript<ul>
+							<li>… variantes : JScript, DMDScript, ActionScript…</li>
+						</ul></li>
+						<li class="fragment">Utilisé notamment<ul>
+							<li class="fragment">… sur les sites web (via les navigateurs)</li>
+							<li class="fragment">… sur les serveurs (via Node.js)</li>
+							<li class="fragment">… sur les ordinateurs de bureau (via Electron)</li>
+						</ul></li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
 				<section>
+					<h2>CSS ?</h2>
+					<p>
+						<a href="https://commons.wikimedia.org/wiki/File:CSS3_logo_and_wordmark.svg"><img src="images/CSS3_logo_and_wordmark.svg.png" style="height: 300px;"></a>
+						<br>
+						<small style="font-size: 40%">© Rudloff, CC-BY 3.0</small>
+					</p>
+					<ul>
+						<li class="fragment">Langage de description de présentation inventé en 1996</li>
+						<li class="fragment">« Feuilles de style en cascade » en anglais</li>
+						<li class="fragment">Standardisé par le W3C</li>
+						<li class="fragment">Utilisé notamment<ul>
+							<li class="fragment">… dans les navigateurs internet</li>
+							<li class="fragment">… dans les bibliothèques d'interfaces graphiques Qt et GTK</li>
+							<li class="fragment">… dans la bibliothèque JavaScript jQuery (sélecteurs uniquement)</li>
+						</ul></li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Gadgets ?</h2>
+					<ul>
+						<li class="fragment">Outils optionnels pour améliorer MediaWiki</li>
+						<li class="fragment">Développés en JavaScript et CSS (et HTML)</li>
+					</ul>
+					<p class="fragment">
+						<a href="images/Gadgets.png"><img src="images/Gadgets.png" style="height: 600px;"></a>
+						<br>
+						<small style="font-size: 40%"><a href="https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Pr%C3%A9f%C3%A9rences#mw-prefsection-gadgets">[[Spécial:Préférences#mw-prefsection-gadgets]]</a></small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Gadgets</h2>
+					<ul>
+						<li>Locaux à un wiki donné<ul>
+							<li class="fragment">… mais chargement possible depuis un autre wiki</li>
+						</ul></li>
+						<li class="fragment">Dans [[MediaWiki:Gadget-<mark>$GADGET</mark>.js]] (et / ou .css)<ul>
+							<li class="fragment">⇒ modifiable uniquement par les administrateurs</li>
+						</ul></li>
+						<li class="fragment">Maintenus quasi-exclusivement par la communauté locale<ul>
+							<li class="fragment">⇒ qualité <em>très</em> variable selon les scripts</li>
+							<li class="fragment">⇒ peu de suivi par les développeurs (hors enwiki)</li>
+							<li class="fragment">⇒ casse fréquente</li>
+							<li class="fragment">⇒ réparations lentes</li>
+							<li class="fragment">… sauf pour quelques gadgets notables (Popups, HotCats…)</li>
+						</ul></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Scripts utilisateur</h2>
+					<ul>
+						<li class="fragment">Même technologie que les gadgets</li>
+						<li class="fragment">Pas activable dans les préférences<ul>
+							<li class="fragment">… mais chargement possible depuis un autre utilisateur</li>
+						</ul></li>
+						<li class="fragment">Dans [[Utilisateur:<mark>$UTILISATEUR</mark>/<mark>$SCRIPT</mark>.js]] (ou .css)<ul>
+							<li class="fragment">⇒ modifiable uniquement par le propriétaire</li>
+							<li class="fragment">… et les administrateurs</li>
+						</ul></li>
+						<li class="fragment">Moins bonnes performances que les gadgets</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scripts utilisateur</h2>
+					<p>
+						<a href="images/Scripts.png"><img src="images/Scripts.png" style="height: 400px;"></a>
+						<br>
+						<small style="font-size: 40%"><a href="https://fr.wikipedia.org/wiki/Spécial:Préférences#mw-prefsection-rendering">[[Spécial:Préférences#mw-prefsection-rendering]]</a></small>
+					</p>
+					<ul>
+						<li class="fragment">$SKIN.js, $SKIN.css ⇒ spécifique à l'apparence et au wiki</li>
+						<li class="fragment">common.js, common.css ⇒ toutes les apparences, spécifique au wiki</li>
+						<li class="fragment">global.js, global.css ⇒ toutes les apparences et tous les wikis</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Gadgets vs scripts utilisateur</h2>
+					<!-- TODO Comparaison nombre gadgets / scripts utilisateurs par wiki (fr, en, wikidata, commons…), + Special:GadgetUsage -->
+					<ul>
+						<li class="fragment"><!-- TODO --></li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME Édition sur Wiki -->
+				<section>
+					<h2>It's all text!</h2>
+					<ul>
+						<li class="fragment"><!-- TODO FIXME + GhostText --></li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME Inspecteur DOM  -->
+				<section>
+					<h2>Exemple CSS</h2>
+					<ul>
+						<li>Masquer l'avertissement sur les droits d'auteur au dessus de la zone d'édition</li>
+					</ul>
+					<p>
+						<a href="images/cpwarn_1.png"><img src="images/cpwarn_1.png" style="height: 400px;"></a>
+					</p>
+					<div class="fragment">
+						  <pre><code style="height: 150px;">
+#cpwarn {
+    display:none;
+}
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.css]]</code> (CSS)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Exemple CSS</h2>
+					<ul>
+						<li>Masquer l'avertissement sur les droits d'auteur au dessus de la zone d'édition</li>
+					</ul>
+					<p>
+						<a href="images/cpwarn_2.png"><img src="images/cpwarn_2.png" style="height: 400px;"></a>
+					</p>
+					<div>
+						  <pre><code style="height: 150px;">
+#cpwarn {
+    display:none;
+}
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.css]]</code> (CSS)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME Console JavaScript et console.log -->
+				<!-- TODO FIXME &debug=true -->
+				<!-- TODO FIXME jQuery, OOjs, OOjs UI… -->
+				<section>
+					<h2>Exemple JavaScript</h2>
+					<ul>
+						<li>Ajouter un lien vers les annonces dans le menu de gauche</li>
+					</ul>
+					<p>
+						<a href="images/Menu_1.png"><img src="images/Menu_1.png" style="height: 250px;"></a>
+					</p>
+					<div class="fragment">
+						<pre><code style="height: 350px;">
+mw.loader.using( 'mediawiki.util', function() {
+    mw.util.addPortletLink(
+        'p-navigation',
+        '/wiki/Wikipedia:Annonces',
+        'Annonces',
+        'n-annonces',
+        'Annonces',
+        'a',
+        '#n-randompage'
+    );
+} );
+
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Exemple JavaScript</h2>
+					<ul>
+						<li>Ajouter un lien vers les annonces dans le menu de gauche</li>
+					</ul>
+					<p>
+						<a href="images/Menu_1.png"><img src="images/Menu_2.png" style="height: 250px;"></a>
+					</p>
+					<div>
+						<pre><code style="height: 350px;">
+mw.loader.using( 'mediawiki.util', function() {
+    mw.util.addPortletLink(
+        'p-navigation',
+        '/wiki/Wikipedia:Annonces',
+        'Annonces',
+        'n-annonces',
+        'Annonces',
+        'a',
+        '#n-randompage'
+    );
+} );
+
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO API + Spécial:ApiSandbox -->
+				<!-- TODO Exemple JS + API : {{bienvenue nouveau}} depuis Spécial:Newusers -->
+				<!-- TODO Debugger -->
+				<section>
+					<h2>Import local</h2>
+					<ul>
+						<li>Importer les scripts d'un autre utilisateur sur le même wiki</li>
+					</ul>
+					<div class="fragment">
+					  <pre><code style="height: 100px;">
+importScript( 'User:Arkanosis/xpatrol.js' );
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+importStyleSheet( 'User:Arkanosis/xpatrol.css' );
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small><!-- TODO FIXME encore possible ? -->
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Import distant</h2>
+					<ul>
+						<li class="fragment">Importer les scripts d'un autre utilisateur sur un autre wiki<ul>
+							<li class="fragment">… voire un autre site</li>
+							<li class="fragment">… ou une ancienne version d'un script</li>
+						</ul></li>
+					</ul>
+					<div class="fragment">
+					  <pre><code style="height: 100px;">
+mw.loader.load( '//meta.wikimedia.org/w/index.php?title=MediaWiki:Wikiminiatlas.js&action=raw&ctype=text/javascript' );
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+@import url('//fr.wikipedia.org/w/index.php?title=MediaWiki:Gadget-VectorClassic.css&action=raw&ctype=text/css');
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.css]]</code> (CSS)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Développement en local</h2>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+mw.loader.load('//localhost/~arkanosis/wikipedia/scripts/common.js');
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+@import url('//localhost/~arkanosis/wikipedia/scripts/common.css');
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.css]]</code> (CSS)</small>
+					</div>
+					<ul>
+						<li class="fragment">Édition / enregistrement des fichiers en local</li>
+						<li class="fragment">Rechargement avec <kbd>ctrl + f5</kbd></li>
+						<li class="fragment">Historique et liste des contributions « propres »</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME Configuration nginx + SSL, wget -->
+				<section>
+					<h2>Transformer un script utilisateur<br>en gadget</h2>
+					<ul>
+						<li class="fragment">Besoin des droits d'administrateur</li>
+						<li class="fragment">Renommage en [[MediaWiki:Gadget-<mark>$GADGET</mark>.js]] (et / ou .css)</li>
+					</ul>
+					<div class="fragment">
+						<pre><code style="height: 100px;" data-noescape>
+obtenir( '<mark>$GADGET</mark>' );
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;" data-noescape>
+importScript( 'MediaWiki:Gadget-<mark>$GADGET</mark>.js' );
+						</code></pre>
+						<small style="font-size: 40%"><code>[[Utilisateur:$UTILISATEUR/common.js]]</code> (JavaScript)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section><!-- TODO FIXME ajouter les cadres autour des trois pages -->
+					<h2>Transformer un script utilisateur<br>en gadget</h2>
+					<ul>
+						<li>Ajouter à la liste des gadgets</li>
+					</ul>
+					<p>
+						<a href="images/Definitions_1.png"><img src="images/Definitions_1.png" style="height: 600px;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Transformer un script utilisateur<br>en gadget</h2>
+					<ul>
+						<li>Rédiger la description</li>
+					</ul>
+					<p>
+						<a href="images/Definitions_2.png"><img src="images/Definitions_2.png" style="height: 600px;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Transformer un script utilisateur<br>en gadget</h2>
+					<ul>
+						<li>Le gadget est accessible à tous les utilisateurs</li>
+					</ul>
+					<p>
+						<a href="images/Definitions_3.png"><img src="images/Definitions_3.png" style="height: 600px;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<!-- TODO FIXME Mise en production gadgets (ajouter, description, activé par défaut, etc.) -->
+				<!-- TODO FIXME ResourceLoader et performances -->
+				<section>
 					<h2>Aller plus loin</h2>
 					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:2014_D%C3%A9caNation_-_Long_Jump_34.jpg"><img src="images/2014_DécaNation_-_Long_Jump_34.jpg" style="width: 600px;"></a>
+						<a href="https://commons.wikimedia.org/wiki/File:2014_D%C3%A9caNation_-_Long_Jump_34.jpg"><img src="images/2014_DécaNation_-_Long_Jump_34.jpg" style="width: 500px;"></a>
 						<br>
 						<small style="font-size: 40%">© Pierre-Yves Beaudouin, CC-BY-SA 4.0</small>
 					</p>
@@ -80,6 +431,7 @@
 						<li><a href="https://www.mediawiki.org/wiki/Manual:Interface">https://www.mediawiki.org/wiki/Manual:Interface</a></li>
 						<li><a href="https://www.mediawiki.org/wiki/Extension:Gadgets">https://www.mediawiki.org/wiki/Extension:Gadgets</a></li>
 						<li><a href="https://www.mediawiki.org/wiki/API:Main_page">https://www.mediawiki.org/wiki/API:Main_page</a></li>
+						<li><a href="https://www.mediawiki.org/wiki/ResourceLoader/Core_modules">https://www.mediawiki.org/wiki/ResourceLoader/Core_modules</a></li>
 						<li><a href="https://www.mediawiki.org/wiki/OOjs_UI">https://www.mediawiki.org/wiki/OOjs_UI</a></li>
 						<li><a href="https://fr.wikipedia.org/wiki/Projet:JavaScript">https://fr.wikipedia.org/wiki/Projet:JavaScript</a></li>
 					</ul>
