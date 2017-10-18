@@ -52,22 +52,6 @@
 					</p>
 				</section>
 				<section>
-					<h2>Modèle ?</h2>
-					<p>
-						<a href="https://commons.wikimedia.org/wiki/File:Archives of American Art - George Pearse Ennis - 2086.jpg"><img src="images/Archives_of_American_Art_-_George_Pearse_Ennis_-_2086.jpg" style="width: 30%;"></a>
-						<br>
-						<small style="font-size: 40%"><s>©</s> US Works Progress Administration, DP</small>
-					</p>
-					<ul>
-						<li class="fragment">Code wiki réutilisable</li>
-						<li class="fragment">… dans autant de pages que souhaité</li>
-						<li class="fragment">… y compris dans d'autres modèles</li>
-					</ul>
-					<p>
-						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
-					</p>
-				</section>
-				<section>
 					<h2>Où tester ?</h2>
 					<ul>
 						<li><a href="https://test.wikipedia.org/">https://test.wikipedia.org/</a></li>
@@ -80,6 +64,22 @@
 					</p>
 					<ul>
 						<li class="fragment">Remplacer « Modèle: » par « Template: »</li>
+					</ul>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèle ?</h2>
+					<p>
+						<a href="https://commons.wikimedia.org/wiki/File:Archives of American Art - George Pearse Ennis - 2086.jpg"><img src="images/Archives_of_American_Art_-_George_Pearse_Ennis_-_2086.jpg" style="width: 30%;"></a>
+						<br>
+						<small style="font-size: 40%"><s>©</s> US Works Progress Administration, DP</small>
+					</p>
+					<ul>
+						<li class="fragment">Code wiki réutilisable</li>
+						<li class="fragment">… dans autant de pages que souhaité</li>
+						<li class="fragment">… y compris dans d'autres modèles</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
@@ -237,6 +237,99 @@ Bonjour Strasbourg !
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
+				<section>
+					<h2>Modèles</h2>
+					<div>
+						<pre><code style="height: 100px;">
+{{quantité}} <!-- Transclusion de la page « Modèle:Quantité » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{Discussion_utilisateur:Jimbo Wales}} <!-- Transclusion de page « Discussion_utilisateur:Jimbo Wales » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{:Jimbo Wales}} <!-- Transclusion de page « Jimbo Wales » (de l'espace principal) -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèles</h2>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur}}} <!-- Valeur du paramètre « quantité » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{{valeur|42}}} <!-- Valeur du paramètre « valeur » ou 42 si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{{valeur|}}} <!-- Valeur du paramètre « valeur » ou rien si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{quantité|valeur=2017}} <!-- Transclusion du modèle « Quantité » avec le paramètre « valeur » à « 42 » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-transition="none">
+					<h2>Modèles</h2>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur}}} <!-- Valeur du paramètre « valeur » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur|42}}} <!-- Valeur du paramètre « valeur » ou 42 si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur|}}} <!-- Valeur du paramètre « valeur » ou rien si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div>
+						<pre><code style="height: 100px;">
+{{quantité}} <!-- Transclusion du modèle « Quantité » sans spécifier le paramètre « valeur » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèles</h2>
+					<p>
+						<a href="images/Palais_du_Rhin_8.png"><img src="images/Palais_du_Rhin_8.png" style="width: 80%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
 				<section data-transition="none">
 					<h2>Modèles</h2>
 					<p>
@@ -251,6 +344,36 @@ Bonjour Strasbourg !
 					<p>
 						<a href="images/Palais_du_Rhin_10.png"><img src="images/Palais_du_Rhin_10.png" style="width: 80%;"></a>
 					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Modèles</h2>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur}}} <!-- Valeur du paramètre « valeur » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur|42}}} <!-- Valeur du paramètre « valeur » ou 42 si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div>
+						<pre><code style="height: 100px;">
+{{{valeur|}}} <!-- Valeur du paramètre « valeur » ou rien si le paramètre n'est pas spécifié -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
+					<div class="fragment">
+						<pre><code style="height: 100px;">
+{{ {{{valeur}}} }} <!-- Transclusion du modèle ayant pour nom la valeur du paramètre « valeur » -->
+						</code></pre>
+						<small style="font-size: 40%"><code>Modèle:Quantité</code> (wikicode)</small>
+					</div>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
@@ -640,7 +763,7 @@ J'existe
 						<small style="font-size: 40%"><s>©</s> Alexandre Nakonechnyj & Lua-Team, DP</small>
 					</p>
 					<ul>
-						<li class="fragment">Langage de programmation</li>
+						<li class="fragment">Langage de programmation inventé en 1993</li>
 						<li class="fragment">« Lune » en portugais (auteurs brésiliens)</li>
 						<li class="fragment">Licence permissive (MIT)</li>
 						<li class="fragment">Léger, facile à intégrer<ul>
@@ -688,13 +811,67 @@ J'existe
 					<ul>
 						<li class="fragment">Extension pour MediaWiki</li>
 						<li class="fragment">« Qu'ils écrivent » en latin (auteurs ita… non, aucun rapport)</li>
-						<li class="fragment">Développée par VasilievVV (vvv) et Tim Starting</li>
+						<li class="fragment">Développée par VasilievVV (vvv) et Tim Starling</li>
 						<li class="fragment">Conçue en 2012 et déployée en 2013</li>
 					</ul>
 					<p class="fragment">
 						<a href="https://en.wikipedia.org/wiki/User:Dragons_flight/Lua_performance"><img src="images/Performance.png" style="width: 70%;"></a>
 						<br>
 						<small style="font-size: 40%">© Dragons flight, CC-BY-SA 3.0</small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scribunto</h2>
+					<ul>
+						<li>Éditeur de code (Ace)</li>
+					</ul>
+					<p>
+						<a href="images/Éditeur.png"><img src="images/Éditeur.png" style="width: 45%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scribunto</h2>
+					<ul>
+						<li>Éditeur de code (Ace)</li>
+						<li>… à tendance IDE</li>
+					</ul>
+					<p>
+						<a href="images/Flycheck.png"><img src="images/Flycheck.png" style="width: 60%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scribunto</h2>
+					<ul>
+						<li>Éditeur de code (Ace)</li>
+						<li>… à tendance IDE</li>
+						<li>… avec debugger</li>
+					</ul>
+					<p>
+						<a href="images/Débugger.png"><img src="images/Débugger.png" style="width: 45%;"></a>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Scribunto</h2>
+					<ul>
+						<li>Éditeur de code (Ace)</li>
+						<li>… à tendance IDE</li>
+						<li>… avec debugger</li>
+						<li>… et backtraces</li>
+					</ul>
+					<p>
+						<a href="images/Backtrace.png"><img src="images/Backtrace.png" style="width: 45%;"></a>
 					</p>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
@@ -870,7 +1047,6 @@ Bonjour Strasbourg !
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
-				<!-- TODO FIXME screenshot ACE editor script error / backtrace -->
 				<section>
 					<h2>Bonjour $MONDE et $1 !</h2>
 					<div style="column-count: 3">
@@ -987,7 +1163,7 @@ Bonjour les wikimédiens de Strasbourg !
 local p = {}
 
 function p.bonjour(frame)
-    return 'Bonjour ' .. frame<mark>:getParents()</mark>.args.qui .. ' de ' .. frame<mark>:getParents()</mark>.args[1] .. ' !'
+    return 'Bonjour ' .. frame<mark>:getParent()</mark>.args.qui .. ' de ' .. frame<mark>:getParent()</mark>.args[1] .. ' !'
 end
 
 return p
@@ -1036,7 +1212,7 @@ Bonjour les wikimédiens de Strasbourg !
 local p = {}
 
 function p.bonjour(frame)
-    return 'Bonjour ' .. <mark>frame:getParents().args</mark>.qui .. ' de ' .. <mark>frame:getParents().args</mark>[1] .. ' !'
+    return 'Bonjour ' .. <mark>frame:getParent().args</mark>.qui .. ' de ' .. <mark>frame:getParent().args</mark>[1] .. ' !'
 end
 
 return p
@@ -1050,7 +1226,7 @@ return p
 local p = {}
 
 function p.bonjour(frame)
-    local args = <mark>frame:getParents().args</mark>
+    local args = <mark>frame:getParent().args</mark>
     return 'Bonjour ' .. <mark>args</mark>.qui .. ' de ' .. <mark>args</mark>[1] .. ' !'
 end
 
@@ -1071,12 +1247,12 @@ return p
 local p = {}
 
 function p.bonjour(frame)
-    local args = frame:getParents().args
+    local args = frame:getParent().args
     return 'Bonjour ' .. args.qui .. ' de ' .. args[1] .. ' !'
 end
 
 function p.salut(frame)
-    local args = frame:getParents().args
+    local args = frame:getParent().args
     return 'Salut ' .. args.qui .. ' de ' .. args[1] .. ' !'
 end
 
@@ -1104,7 +1280,7 @@ return p
 local p = {}
 
 local function internal(frame, mot)
-    local args = frame:getParents().args
+    local args = frame:getParent().args
     return mot .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
 end
 
@@ -1137,7 +1313,7 @@ return p
 local p = {}
 
 function p.message(frame, mot)
-    local args = frame:getParents().args
+    local args = frame:getParent().args
     return mot .. ' ' .. args.qui .. ' de ' .. args[1] .. ' !'
 end
 
@@ -1242,6 +1418,9 @@ return p
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
+				<section data-background="images/Nico_Rosberg_overtaking_Heidfeld_2007_Brazil.jpg"> <!-- https://commons.wikimedia.org/wiki/File:Nico_Rosberg_overtaking_Heidfeld_2007_Brazil.jpg -->
+					<small style="font-size: 50%" class="caption">© Morio, CC-BY-SA 3.0</small>
+				</section>
 				<section>
 					<h2>Boucles</h2>
 					<div style="column-count: 1">
@@ -1303,12 +1482,66 @@ return p
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
 					</p>
 				</section>
-				<!-- TODO FIXME debugger -->
-				<!-- TODO FIXME ipairs, pairs -->
+				<section>
+					<h2>Itérateurs</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 750px; max-height: 750px">
+local p = {}
+
+function p.parametres(frame)
+
+    local resultat = ''
+
+    for index, valeur in ipairs(frame.args) do
+        resultat = resultat .. '* ' .. valeur .. '\n'
+    end
+
+    resultat = resultat .. '----\n'
+
+    for clef, valeur in pairs(frame.args) do
+        resultat = resultat .. '* ' .. clef .. ' => ' .. valeur .. '\n'
+    end
+
+    return resultat
+
+end
+
+return p
+							</code></pre>
+							<small style="font-size: 40%"><code>Module:Paramètres</code> (Lua)</small>
+						</div>
+					</div>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section>
+					<h2>Itérateurs</h2>
+					<div style="column-count: 1">
+						<div>
+							<pre><code style="height: 250px;">
+{{#invoke:Parametres|parametres|qui=les Wikipédiens|Strasbourg|quoi=Lua|quand=jeudi|Bonjour}}
+							</code></pre>
+							<small style="font-size: 40%"><code>Paramètres</code> (wikicode)</small>
+						</div>
+					</div>
+					<p class="fragment">
+						<a href="images/Itérateurs.png"><img src="images/Itérateurs.png" style="width: 70%;"></a>
+						<br>
+						<small style="font-size: 40%"><code>Bonjour</code> (rendu)</small>
+					</p>
+					<p>
+						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
+					</p>
+				</section>
+				<section data-background="images/Expedition_21_Lifts_Off.jpg"> <!-- https://commons.wikimedia.org/wiki/File:Expedition_21_Lifts_Off.jpg -->
+					<small style="font-size: 50%" class="caption"><s>©</s> NASA/Bill Ingalls, DP</small>
+				</section>
 				<section>
 					<h2>Strlen</h2>
 					<div style="column-count: 1">
-						<div>
+						<div class="fragment">
 							<pre><code style="height: 250px;">
 local p = {}
 
@@ -1354,6 +1587,7 @@ return p
 					<ul>
 						<li>Morceaux de pages « préfabriqués »</li>
 						<li class="fragment">… vs éléments composables facilement</li>
+						<li class="fragment">Approches complémentaires</li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
@@ -1434,6 +1668,7 @@ return p
 						<li><a href="https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual">https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual</a></li>
 						<li class="fragment"><a href="https://www.mediawiki.org/wiki/Extension:Wikibase_Client/Lua">https://www.mediawiki.org/wiki/Extension:Wikibase_Client/Lua</a></li>
 						<li class="fragment"><a href="https://fr.wikiversity.org/wiki/Initiation_au_Lua_avec_Scribunto">https://fr.wikiversity.org/wiki/Initiation_au_Lua_avec_Scribunto</a></li>
+						<li class="fragment"><a href="https://fr.wikipedia.org/wiki/Projet:Scribunto">https://fr.wikipedia.org/wiki/Projet:Scribunto</a></li>
 					</ul>
 					<p>
 						<small style="font-size: 50%" class="caption">© <a href="https://fr.wikipedia.org/wiki/User:Arkanosis"><span style="color:gray">User:</span>Arkanosis</a> — CC-BY 4.0 — WikiConvention francophone 2017</small>
