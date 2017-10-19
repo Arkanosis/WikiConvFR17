@@ -408,14 +408,14 @@ quelque chose
 					<div style="column-count: 2" class="fragment">
 						<div>
 							<pre><code style="height: 150px;">
-{{#ifexpr: 1 = 2 | Ça alors ! }}
-{{#ifexpr: 0 = 0 | La tête à toto }}
+{{#ifexpr: 1 = 2 | Ça alors ! | Ah ben non !}}
+{{#ifexpr: 0 = 0 | La tête à toto | Autre chose}}
 							</code></pre>
 							<small style="font-size: 40%"><code>Test</code> (wikicode)</small>
 						</div>
 						<div class="fragment">
 							<pre><code style="height: 150px;">
-
+Ah ben non !
 La tête à toto
 							</code></pre>
 							<small style="font-size: 40%"><code>Test</code> (HTML)</small>
@@ -1618,7 +1618,7 @@ return p
 								</tr>
 								<tr>
 									<th>Expert</th>
-									<td style="color: green">Facile</td>
+									<td style="color: green">Trivial</td>
 									<td style="color: green">Facile</td>
 								</tr>
 							</tbody>
