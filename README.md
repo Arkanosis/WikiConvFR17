@@ -1,5 +1,12 @@
 # WikiConvFR17
 
+Ce dépôt contient les slides de mes deux interventions lors de la WikiConvention francophone 2017.
+
+## Versions en ligne
+
+* [Des modèles aux modules : introduction au langage Lua](https://arkanosis.fr/wikipedia/WikiConvFR17/Des%20mod%c3%a8les%20aux%20modules%20:%20introduction%20au%20langage%20Lua/Slides.html)
+* [Améliorer MediaWiki grâce aux gadgets : introduction aux langages JavaScript et CSS](https://arkanosis.fr/wikipedia/WikiConvFR17/Am%c3%a9liorer%20MediaWiki%20gr%c3%a2ce%20aux%20gadgets%20:%20introduction%20aux%20langages%20JavaScript%20et%20CSS/Slides.html)
+
 ## Checklist
 - Vérifier le wifi
 - Se connecter avec le bon compte
